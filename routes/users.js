@@ -21,15 +21,39 @@ router.get("/cereal", function(req, res, next) {
     })
     .catch(err => res.status(500).send(err));
 });
-router.get("/gender", function(req, res, next) {
-  db("SELECT * FROM gender;")
+
+router.put("/cereal/:cereal_id", (req, res) => {
+  db(`UPDATE cereal SET image ='${req.body.image}' WHERE id=${req.params.cereal_id};`)
     .then(results => {
-      res.send(results.data);
+      if (results.error) {
+        res.status(404).send({ error: results.error });
+      } else {
+        db("SELECT * FROM cereal ORDER BY id ASC;")
+          .then(results => {
+            res.send(results.data);
+          })
+          .catch(err => res.status(500).send(err));
+      }
     })
     .catch(err => res.status(500).send(err));
 });
+router.put("/:id", (req, res) => {
+  db(`UPDATE users SET photo ='${req.body.photo}' WHERE id=${req.params.id};`)
+  .then(result => {
+    if(result.error) {
+      res.status(404).send({error: result.error});
+    } else {
+      db("SELECT * FROM users ORDER BY id ASC;")
+      .then(result => {
+        res.send(result.data);
+      })
+      .catch(err => res.status(500).send(err));
+  }
+}) 
+  .catch(err => res.status(500).send(err));
+});
 
-router.get("/:cereal_id", function(req, res, next) {
+router.get("/cereal/:cereal_id", function(req, res, next) {
   if (!Number.isInteger(parseInt(req.params.cereal_id))) {
     res.status(400).send("Id is a number");
   }

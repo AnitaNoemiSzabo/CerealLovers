@@ -10,11 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "cereals",
       cerealsList: [],
-      userList: [],
-      isUsersShowing: false
-    
+      userList: []
     }
   }
   componentDidMount() {
@@ -31,46 +28,36 @@ class App extends React.Component {
         });
       });
   };
-  getUsers = () => {
-    fetch('/users')
-    .then(res => res.json())
-    .then(jsonData => {
-      console.log(jsonData)
-      this.setState({
-        userList: jsonData
-      })
-    })
-  }
+  // getUsers = () => {
+  //   fetch('/users')
+  //   .then(res => res.json())
+  //   .then(jsonData => {
+  //     console.log(jsonData)
+  //     this.setState({
+  //       userList: jsonData
+  //     })
+  //   })
+  // }
  
  clickedCereals = (id) => {
    fetch(`users/cereal/${id}`)
     .then(res => res.json())
     .then(jsonData => {
-      console.log(jsonData);
       this.setState({
-        userList: jsonData
+        userList: [...this.state.userList, jsonData]
       })
     })
   }
-
-  // getPage = () => {
-  //   const { page } = this.state;
-  //   switch(page) {
-  //     case "cereals":
-  //       return <ShowCereals changeView={this.handleChangeRoute} cereals={this.state.cerealsList} clickedCereals={id => this.clickedCereals(id)}/>
-  //     case "users":
-  //       return <ShowUsers changeView={this.handleChangeRoute} userData={this.state.userList}/>
-  //     default:
-  //       return <App/>;
-  //   }
-  // }
 
   render() {
     return (
       <div className="main">
         <Router>
-          <Link to="/cereals">Meet Other Cheerios?</Link>
+          <Link to="/cereals">Cereal Connection</Link>
           <Switch>
+            {/* <Route exact path="/" >
+              <App />
+            </Route> */}
             <Route path="/cereals">
               <ShowCereals cereals={this.state.cerealsList} clickedCereals={id => this.clickedCereals(id)}/>
             </Route>
@@ -79,12 +66,6 @@ class App extends React.Component {
             </Route>
           </Switch>
         </Router>
-        <div>
-          {/* {this.state.adminView ?
-          <ShowCereals cereals={this.state.cerealsList} clickedCereals={id => this.clickedCereals(id)}/> :
-          <ShowUsers userData={this.state.userList}/>
-          } */}
-        </div>
       </div>
     );
   }

@@ -1,56 +1,46 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class ShowCereals extends React.Component {
     constructor(props) {
       super(props);
-        this.state= {
-     
-        }
+        // this.state= {
+        //   isChecked: false,
+        //   cerealId: []
+        // }
     }
-    // componentDidMount() {
-    //   this.getCereals();
-    // }
-  
-    // getCereals = () => {
-    //   fetch('/users/cereal')
-    //     .then(res => res.json())
-    //     .then(jsonData => {
-    //       console.log(jsonData)
-    //       this.setState({
-    //         cerealsList: jsonData
-    //       });
-    //     });
-    // };
-  
-    // getUsers = () => {
-    //   fetch('/users')
-    //   .then(res => res.json())
-    //   .then(jsonData => {
-    //     console.log(jsonData)
-    //     this.setState({
-    //       userList: jsonData
-    //     })
-    //   })
-    // }
+    
    
-    handleClick = (e) => {
-      const id = e.target.alt;
-      this.props.clickedCereals(id);
+    handleChange = (e) => {
+      const id = e.target.checked;
+      const idNumber = e.target.id
+      if (id) {
+        this.props.clickedCereals(idNumber)
+      } 
     }
-    // renderPage = () => {
-    //   this.props.changeView(this.state.page);
+    // handleSubmit = () => {
+    //   const id = this.state.cerealId;
+    //   if (this.state.isBoxChecked) {
+    //     id.map(each => {
+    //       console.log(each)
+    //       this.props.clickedCereals(each)
+    //     })
+    //   }
     // }
     render() {
       return (
           <div className="img-container">
             {this.props.cereals.map((cereal, index) => {
               return(
-                <img onClick={(e) => this.handleClick(e)} key={index} src={cereal.image} alt={cereal.id} />
+                  <div key={index}>
+                    <input type="checkbox" onClick={(e) => this.handleChange(e)} id={cereal.id} name={cereal.type}/>
+                    <img src={cereal.image} alt={cereal.id} />
+                  </div>
               ) 
             })}
             <div>
-              <Link to="/users">Users</Link>
+              {/* <button onClick={() => {this.handleSubmit()}}>button</button> */}
+              <Link to="/users">Connect...</Link>
             </div>
           </div>
       );

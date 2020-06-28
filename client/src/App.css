@@ -1,10 +1,17 @@
-
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 .img-container {
-  width: 600px;
+  display: flex;
+  width: 700px;
   margin: 40px auto;
   padding-left: 50px;
+  flex-wrap: wrap;
 }
-
+.user-image-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 img {
   width: 100px;
   height: 100px;

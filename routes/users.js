@@ -37,8 +37,8 @@ router.put("/cereal/:cereal_id", (req, res) => {
     })
     .catch(err => res.status(500).send(err));
 });
-router.put("/:id", (req, res) => {
-  db(`UPDATE users SET photo ='${req.body.photo}' WHERE id=${req.params.id};`)
+router.put("/:cereal_id", (req, res) => {
+  db(`UPDATE users SET cereal_id ='${req.body.photo}' WHERE id=${req.params.id};`)
   .then(result => {
     if(result.error) {
       res.status(404).send({error: result.error});
@@ -51,6 +51,18 @@ router.put("/:id", (req, res) => {
   }
 }) 
   .catch(err => res.status(500).send(err));
+});
+
+router.post("/", function(req, res) {
+  db(`INSERT INTO users (name, cereal_id, city, photo, dob) VALUES ('${req.body.name}', ${req.body.cereal_id}, '${req.body.city}', '${req.body.photo}','${req.body.dob}');`)
+    .then(result => {
+      if(result.error) {
+        res.status(404).send({error: result.error});
+      } else {
+        getItems(req, res)
+      }
+    })
+    .catch(err => res.status(500).send(err));
 });
 
 router.get("/cereal/:cereal_id", function(req, res, next) {

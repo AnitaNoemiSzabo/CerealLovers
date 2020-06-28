@@ -19,7 +19,7 @@ handleClick = (user) => {
     userName: user.name,
     userCity: user.city,
     userDob: user.dob,
-    isVisable: !this.state.isVisable
+    isVisable: true
   })
 }
 renderUserImage = () => {

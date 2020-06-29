@@ -35,16 +35,16 @@ renderUserImage = () => {
 }
   render() {
     return(
-        <div>
+        <div className="profile-container">
           {this.state.isVisable ? <div>
             <img className="big-img-icon" src={this.state.userUrl} alt={this.state.name} />
-            <p>{this.state.userName}, {this.state.userDob} {this.state.userCity}</p>  
+            <p className="name-tag">{this.state.userName}, {this.state.userDob} {this.state.userCity}</p>  
           </div> : null }
           <div className="user-image-container">
             {this.renderUserImage()}
           </div>
           <div className="linkTag">
-            <Link to="/cereals" style={{color: 'pink', textDecoration: "none"}}>Meet other Cheerios?</Link>
+            <Link to="/cereals" style={{color: 'black', fontSize: '20px',  textDecoration: "none"}}>Meet other Cheerios?</Link>
           </div>
         </div>
     )

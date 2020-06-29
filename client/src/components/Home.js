@@ -58,8 +58,8 @@ class Home extends React.Component {
     }
     render() {
       return (
-          <div clasName="form-container"> 
-            <form>
+          <div className="form-container"> 
+            <div className="form">
               <p>What is your name?</p>
               <input type="text" onChange={(e)=> this.addName(e)}></input>
               <p>Where do you live?</p>
@@ -82,9 +82,9 @@ class Home extends React.Component {
                 <option value="10">Trix</option>
               </select>
               <button className="submit" onClick={(e) => {this.handleSubmit(e)}}>Submit</button>
-            </form>
-            <div className="linkTag">
-              <Link to="/cereals" style={{color: 'pink', textDecoration: "none"}}>Ready?</Link>
+              <div className="linkTag">
+                <Link to="/cereals" style={{fontSize: '20px', color: 'pink', textDecoration: "none", fontWeight: 'bold'}}>Ready?</Link>
+              </div>
             </div>
           </div>
       );

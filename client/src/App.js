@@ -82,7 +82,7 @@ selectedUsers = (newList) => {
         <Router>
           <div className="linkTag">
             {this.addUsers()}
-            <Link to="/home" className="nav_home" style={{color: 'pink', textDecoration: "none"}}>Cereal Connection</Link>
+            <Link to="/home" className="nav_home" style={{ textShadow: '2px 2px 2px #000000', padding: '10px', fontSize: '24px', fontWeight: 'bold', color: 'pink', textDecoration: "none"}}>Cereal Connection</Link>
           </div>
           <Switch>
             <Route path="/home">

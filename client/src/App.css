@@ -4,16 +4,50 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+html{ 
+  padding: 0;
+  background: url("https://images.unsplash.com/photo-1504308805006-0f7a5f1f0f71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60");
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+}
+.form-container {
+  width: 100%;
+ 
+}
 .img-container {
   display: flex;
   width: 700px;
   margin: 0 auto;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
 }
+.profile-container, .user-image-container {
+  background-color: white;
+  border-radius: 10px;
+  width: 700px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.name-tag {
+  background-color: #ffbcbc;
+
+}
+/* .user-image-container {
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  width: 700px;
+  margin: 0 auto;
+} */
 .user-image-container {
   display: flex;
   flex-wrap: wrap;
+
 }
 img {
   width: 100px;
@@ -25,9 +59,15 @@ img {
 h1 {
   text-align: center;
 }
-form {
+.form-container {
+  background-color: white;
+}
+.form {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
   width: 500px;
   margin: 0 auto;
+  font-weight: 400;
 }
 form input {
   width: 100%;
@@ -43,9 +83,7 @@ select {
   text-align: right;
   margin: 30px;
 }
-/* a .nav_home:hover {
-  color: blue;
-} */
+
 a .cereal_link {
   margin-top: 50px;
   width: 700px;
@@ -53,5 +91,35 @@ a .cereal_link {
 }
 .cereal_link {
   margin-top: 20px;
+  text-align: center;
+  padding-right: 40px;
+}
+
+.submit {
+  background-color: #ffbcbc;
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+.submit:hover {
+  opacity: 1;
+}
+.submit-cereals  { 
+  background-color: #ffbcbc;
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+.cereal_link {
+  text-align: right;
+}
+.submit-cereals-container {
+  padding-top: 20px;
   text-align: center;
 }

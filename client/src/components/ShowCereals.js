@@ -66,8 +66,8 @@ class ShowCereals extends React.Component {
             <div className="submit-cereals-container">
               <button className="submit-cereals" onClick={() => this.clickedCereals()}>Submit</button>
             </div>
-            <div className="cereal_link">
-              <Link to="/users" style={{textShadow: '2px 2px 2px #000000', fontSize: '20px', fontWeight: 'bold', color: 'pink', textDecoration: "none"}}>Connect Now</Link>
+            <div className="gender_link">
+              <Link to="/gender" style={{textShadow: '2px 2px 2px #000000', fontSize: '20px', fontWeight: 'bold', color: 'pink', textDecoration: "none"}}>Who do you want to meet?</Link>
             </div>
           </div>
       );

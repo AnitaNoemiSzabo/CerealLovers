@@ -58,6 +58,7 @@ img {
   object-fit: cover;
   padding: 3px;
 }
+
 h1 {
   text-align: center;
 }
@@ -118,10 +119,44 @@ a .cereal_link {
   color: white;
   font-weight: bold;
 }
-.cereal_link {
+/* .cereal_link {
   text-align: right;
-}
+} */
 .submit-cereals-container {
   padding-top: 20px;
   text-align: center;
+}
+
+
+
+
+.gender_link {
+  text-align: right;
+}
+
+
+.genderImage{
+  width: 200px;
+  height: 200px;
+  border-radius: 30px;
+  object-fit: cover;
+  padding: 3px;
+}
+
+.submit-gender-container {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.submit-gender  { 
+  background-color: #ffbcbc;
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.users_link {
+  text-align: right;
 }

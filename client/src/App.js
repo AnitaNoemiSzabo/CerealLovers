@@ -4,6 +4,7 @@ import './App.css';
 import ShowUsers from './components/ShowUsers';
 import ShowCereals from './components/ShowCereals';
 import Home from './components/Home';
+import ShowGender from './components/ShowGender';
 
 
 
@@ -17,11 +18,15 @@ class App extends React.Component {
       city: "",
       profile: "",
       dob: "",
-      cereal_id: "" 
+      cereal_id: "", 
+      gender_id: null,
+      genderList: []
     }
   }
+
   componentDidMount() {
     this.getCereals();
+    this.getGender();
   }
 
   getCereals = () => {
@@ -34,15 +39,31 @@ class App extends React.Component {
         });
       });
   };
+
+//ANITA
+  getGender = () => {
+    fetch('/users/gender')
+      .then(res => res.json())
+      .then(jsonData => {
+        console.log(jsonData)
+        this.setState({
+          genderList: jsonData
+        });
+      });
+  };
+
+
   updateUsers = (newUser) => {
     this.setState({
       name: newUser.name,
       city: newUser.city,
       profile: newUser.profile,
       dob: newUser.dob,
-      cereal_id: newUser.cereal_id
+      cereal_id: newUser.cereal_id,
+      gender_id: newUser.gender_id
     })
   }
+
   addUsers = () => {
     fetch('/users', {
         method: "POST",
@@ -54,9 +75,11 @@ class App extends React.Component {
           cereal_id: this.state.cereal_id,
           city: this.state.city,
           photo: this.state.profile,
-          dob: this.state.dob
+          dob: this.state.dob,
+          gender_id: this.state.gender_id
         }) 
-      })                                                                                                                                                                                                       
+      })            
+
     .then(response => {   
         // console.log(response)                                                                                                                                                            
       if (!response.ok) {
@@ -65,10 +88,12 @@ class App extends React.Component {
         return response;
       }
     })
+
     .catch(e => {
       console.log('There has been a problem with your fetch operation: ' + e.message);
     });
 }
+
 selectedUsers = (newList) => {
   this.setState({
     userList: [newList]
@@ -90,6 +115,9 @@ selectedUsers = (newList) => {
             </Route>
             <Route path="/cereals">
               <ShowCereals cereals={this.state.cerealsList} selectedUsers={(newList) => this.selectedUsers(newList)}/>
+            </Route>
+            <Route path="/gender">
+              <ShowGender gender={this.state.genderList} selectedUsers={(newList) => this.selectedUsers(newList)}/>
             </Route>
             <Route path="/users">
               <ShowUsers userData={this.state.userList}/>

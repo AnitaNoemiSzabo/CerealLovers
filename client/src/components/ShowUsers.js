@@ -22,6 +22,7 @@ handleClick = (user) => {
     isVisable: true
   })
 }
+
 renderUserImage = () => {
   return this.props.userData.map(users => {
     return users.map((user, index) => {
@@ -33,6 +34,7 @@ renderUserImage = () => {
      })
      })
 }
+
   render() {
     return(
         <div className="profile-container">

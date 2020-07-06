@@ -68,6 +68,8 @@ router.get("/gender/:gender_id", function(req, res, next) {
     .catch(err => res.status(500).send(err));
 });
 
+
+
 //if I click 2 cereals, it will get users for both  - localhost:5000/users/2, 1/
 //localhost:5000/users/2/2  (cereal id / gender id)
 router.get("/:ids/:gender_id", function(req, res, next) {

@@ -130,6 +130,16 @@ a .cereal_link {
 
 
 
+.gender-container {
+  display: flex;
+  width: 700px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color:pink;
+  border-radius: 10px;
+}
+
 .gender_link {
   text-align: right;
 }
@@ -159,4 +169,20 @@ a .cereal_link {
 
 .users_link {
   text-align: right;
+}
+
+.filteredList{
+  display: flex;
+  width: 700px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color:pink;
+}
+
+ul{
+  list-style-type: none;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; */
 }

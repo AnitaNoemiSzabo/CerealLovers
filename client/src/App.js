@@ -1,11 +1,12 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route, Link, NavLink} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'  //took out NavLink
 import './App.css';
 import ShowUsers from './components/ShowUsers';
-import ShowCereals from './components/ShowCereals';
+import ShowFilter from './components/ShowFilter';
 import Home from './components/Home';
-import ShowGender from './components/ShowGender';
-
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
 
 
 class App extends React.Component {
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.getGender();
   }
 
+  //SHOWING CHECKBOXES
   getCereals = () => {
     fetch('/users/cereal')
       .then(res => res.json())
@@ -80,8 +82,7 @@ class App extends React.Component {
         }) 
       })            
 
-    .then(response => {   
-        // console.log(response)                                                                                                                                                            
+    .then(response => {                                                                                                                  
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       } else {
@@ -101,6 +102,9 @@ selectedUsers = (newList) => {
 }
 
 
+
+
+
   render() {
     return (
       <div className="main">
@@ -114,11 +118,11 @@ selectedUsers = (newList) => {
               <Home updateUsers={(newUser) => this.updateUsers(newUser)} />
             </Route>
             <Route path="/cereals">
-              <ShowCereals cereals={this.state.cerealsList} selectedUsers={(newList) => this.selectedUsers(newList)}/>
+              <ShowFilter cereals={this.state.cerealsList} gender={this.state.genderList} selectedUsers={(newList) => this.selectedUsers(newList)}/>
             </Route>
-            <Route path="/gender">
+            {/* <Route path="/gender">
               <ShowGender gender={this.state.genderList} selectedUsers={(newList) => this.selectedUsers(newList)}/>
-            </Route>
+            </Route> */}
             <Route path="/users">
               <ShowUsers userData={this.state.userList}/>
             </Route>

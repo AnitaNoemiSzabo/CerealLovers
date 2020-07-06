@@ -46,7 +46,7 @@ renderUserImage = () => {
             {this.renderUserImage()}
           </div>
           <div className="linkTag">
-            <Link to="/cereals" style={{color: 'black', fontSize: '20px',  textDecoration: "none"}}>Meet other Cheerios?</Link>
+            <Link to="/users" style={{color: 'black', fontSize: '20px',  textDecoration: "none"}}>Meet other Cheerios?</Link>
           </div>
         </div>
     )

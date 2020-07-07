@@ -23,6 +23,7 @@ handleClick = (user) => {
   })
 }
 
+//renders the props, which was passed from parent component
 renderUserImage = () => {
   return this.props.userData.map(users => {
     return users.map((user, index) => {

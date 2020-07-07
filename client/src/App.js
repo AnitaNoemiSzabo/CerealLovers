@@ -70,6 +70,7 @@ class App extends React.Component {
     })
   }
 
+  //utolso pillanatban kiveve, mert bekavart valahol mashol. Megnezni, hogy visszarakhato
   addUsers = () => {
     // fetch('/users', {
     //     method: "POST",
@@ -99,6 +100,8 @@ class App extends React.Component {
     // });
 }
 
+
+//I change the state of the list
 selectedUsers = (newList) => {
   this.setState({
     userList: [newList]
@@ -107,7 +110,7 @@ selectedUsers = (newList) => {
 
 
 
-
+//<ShowUsers userData={this.state.userList}/>  : when I update the user on line, the result will be passed automaticaly to showUser to render in showuser.js
 
   render() {
     return (
@@ -128,7 +131,8 @@ selectedUsers = (newList) => {
               <ShowGender gender={this.state.genderList} selectedUsers={(newList) => this.selectedUsers(newList)}/>
             </Route> */}
             <Route path="/users">
-              <ShowUsers userData={this.state.userList}/>
+
+               <ShowUsers userData={this.state.userList}/>  
             </Route>
           </Switch>
         </Router>

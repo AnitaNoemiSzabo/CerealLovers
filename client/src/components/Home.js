@@ -61,6 +61,7 @@ class Home extends React.Component {
 
     handleSubmit = (e) => {
       e.preventDefault();
+      // eslint-disable-next-line 
       const newUser = this.state;
       this.props.updateUsers({
         name: this.state.name,

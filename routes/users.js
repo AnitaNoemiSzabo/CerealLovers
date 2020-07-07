@@ -72,7 +72,7 @@ router.get("/gender/:gender_id", function(req, res, next) {
 
 //if I click 2 cereals, it will get users for both  - localhost:5000/users/2, 1/
 //localhost:5000/users/2/2  (cereal id / gender id)
-router.get("/:ids/:gender_id", function(req, res, next) {
+router.get("/filter/:ids/:gender_id", function(req, res, next) {
   db(`SELECT * FROM users WHERE cereal_id IN (${req.params.ids}) AND gender_id IN (${req.params.gender_id});`)
   .then(results => {
     if (results.error) {
@@ -86,7 +86,7 @@ router.get("/:ids/:gender_id", function(req, res, next) {
 
 
 
-//just to change pic
+//to change pic
 router.put("/:id", (req, res) => {
   db(`UPDATE users SET photo ='${req.body.photo}' WHERE id=${req.params.id};`)
     .then(results => {

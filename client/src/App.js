@@ -4,8 +4,11 @@ import './App.css';
 import ShowUsers from './components/ShowUsers';
 import ShowFilter from './components/ShowFilter';
 import Home from './components/Home';
+// eslint-disable-next-line 
 import { library } from '@fortawesome/fontawesome-svg-core';
+// eslint-disable-next-line 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// eslint-disable-next-line 
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -36,6 +39,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(jsonData => {
         console.log(jsonData)
+
         this.setState({
           cerealsList: jsonData
         });
@@ -67,32 +71,32 @@ class App extends React.Component {
   }
 
   addUsers = () => {
-    fetch('/users', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name: this.state.name,
-          cereal_id: this.state.cereal_id,
-          city: this.state.city,
-          photo: this.state.profile,
-          dob: this.state.dob,
-          gender_id: this.state.gender_id
-        }) 
-      })            
+    // fetch('/users', {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //       name: this.state.name,
+    //       cereal_id: this.state.cereal_id,
+    //       city: this.state.city,
+    //       photo: this.state.profile,
+    //       dob: this.state.dob,
+    //       gender_id: this.state.gender_id
+    //     }) 
+    //   })            
 
-    .then(response => {                                                                                                                  
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      } else {
-        return response;
-      }
-    })
+    // .then(response => {                                                                                                                  
+    //   if (!response.ok) {
+    //     throw new Error(`HTTP error! status: ${response.status}`);
+    //   } else {
+    //     return response;
+    //   }
+    // })
 
-    .catch(e => {
-      console.log('There has been a problem with your fetch operation: ' + e.message);
-    });
+    // .catch(e => {
+    //   console.log('There has been a problem with your fetch operation: ' + e.message);
+    // });
 }
 
 selectedUsers = (newList) => {

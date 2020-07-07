@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+// eslint-disable-next-line 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ShowFilter extends React.Component {
@@ -13,20 +14,23 @@ class ShowFilter extends React.Component {
       }
     }
     
-   //ONE MORE HANDLECHANGE - OK
+
     handleChange = (e) => {
       // console.log(e.target.checked);
       // console.log(e.target.name-1);
       let arr = [...this.state.checkedCereals];
-      arr[e.target.name-1] = e.target.checkedCereals;
+      arr[e.target.name-1] = e.target.checked;
       this.setState({
       checkedCereals: arr
       })
     }
 
-    handleChange = (e) => {
-      let arr = [...this.state.checkedGender];
-      arr[e.target.name-1] = e.target.checkedGender;
+    //can not be calles as an other function (no double handleChange!!)
+    handleClick = (e) => {
+      console.log(e.target.checked);
+      console.log(e.target.checkedGender);
+      let arr = [...this.state.checkedGender];   //referring to the array
+      arr[e.target.name-2] = e.target.checked;   //referring to the property
       this.setState({
       checkedGender: arr
       })
@@ -50,19 +54,21 @@ class ShowFilter extends React.Component {
           genderList.push(i+1);
         }}
         
-   fetch(`/${idList}/${genderList}/`)
+        console.log (`/${idList}/${genderList}`);  //shows that without filter/ it takes the post method
+   fetch(`/users/filter/${idList}/${genderList}/`)
       .then(res => res.json())
       .then(jsonData => {   
         console.log(jsonData)    
+      
         this.setState({
         userList: jsonData
         });    
         this.props.selectedUsers(this.state.userList);        // selectedUsers - a callback in App.js                                                                                                                                      
-        if (!jsonData.ok) {
-          throw new Error(`HTTP error! status: ${jsonData.status}`);
-        } else {
-          return jsonData;
-        }
+        // if (!jsonData.ok) {
+        //   throw new Error(`HTTP error! status: ${jsonData.status}`);
+        // } else {
+        //   return jsonData;
+        // }
       }) 
       .catch(e => {
         console.log('There has been a problem with your fetch operation: ' + e.message);
@@ -91,7 +97,7 @@ class ShowFilter extends React.Component {
               {this.props.gender.map((gender, id) => {
                 return(
                       <div key={id}>
-                      <input type="checkbox" onClick={(e) => this.handleChange(e)} id={gender.id} name={gender.id}/>
+                      <input type="checkbox" onClick={(e) => this.handleClick(e)} id={gender.id} name={gender.id}/>
                       {/* <img className="genderImage" src={gender.image} alt={gender.id} /> */}
                       <p>{gender.name}</p> 
                       {/* <i className="fa fa-venus">{gender.name}</i>
@@ -110,13 +116,13 @@ class ShowFilter extends React.Component {
               <br/>
               <br/>
             </div>
-            <div className="filteredList">
+            {/* <div className="filteredList">
               <ul>
-                <li>Name: {this.props.name}</li>
+                <li>Name: {this.props.name}</li>   
                 <li>Location: {this.props.city}</li>
                 <li>Date of Birth: {this.props.dob}</li>
               </ul>
-            </div>
+            </div> */}
             <div className="users_link">
             <Link to="/users" style={{textShadow: '2px 2px 2px #000000', fontSize: '20px', fontWeight: 'bold', color: 'pink', textDecoration: "none"}}>Connect Now</Link>
           </div>

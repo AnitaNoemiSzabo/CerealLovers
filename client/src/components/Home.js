@@ -50,7 +50,6 @@ class Home extends React.Component {
       })
     }
 
-    //ANITA
     addGender = (e) => {
       const newGender = e.target.value;
       console.log(newGender)
@@ -73,7 +72,7 @@ class Home extends React.Component {
       });
     }
     
-    //ANITA - SELECT GENDER OPTIONS
+
     render() {
       return (
           <div className="form-container"> 
@@ -117,7 +116,6 @@ class Home extends React.Component {
           </div>
       );
     }
-    
   }
   
   export default Home;

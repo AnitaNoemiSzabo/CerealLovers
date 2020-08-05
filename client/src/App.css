@@ -127,9 +127,6 @@ a .cereal_link {
   text-align: center;
 }
 
-
-
-
 .gender-container {
   display: flex;
   width: 700px;
@@ -182,7 +179,4 @@ a .cereal_link {
 
 ul{
   list-style-type: none;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly; */
 }

@@ -14,28 +14,20 @@ class ShowFilter extends React.Component {
       }
     }
     
-    //SUMMARY:
-    //2 filters (cereal & gender) =>handleChange, handleClick => clickedCereals to collect filtered data AND
-    //sent a props message to parent (the other half of the message is the SelectedUsers call back function in PAR: userList: [newList]), 
-    //not to use the userList defined in the state of PAR but the new, filtered list. 
-    //the onclick/onhandle part of these ar in the render 
-
     handleChange = (e) => {
-      // console.log(e.target.checked);
-      // console.log(e.target.name-1);
+   
       let arr = [...this.state.checkedCereals];
-      arr[e.target.name-1] = e.target.checked;  // array starts at 0, id list at 1, thats why is -1 here (gender was -2, as first ID was 2 -see in datagrip)
+      arr[e.target.name-1] = e.target.checked;  
       this.setState({    
       checkedCereals: arr
       })
     }
 
-    //can not be called as an other function (no double handleChange!!)
     handleClick = (e) => {
       console.log(e.target.checked);
       console.log(e.target.checkedGender);
-      let arr = [...this.state.checkedGender];   //referring to the array
-      arr[e.target.name-2] = e.target.checked;   //referring to the property  (value of input box when it is checked)
+      let arr = [...this.state.checkedGender];   
+      arr[e.target.name-2] = e.target.checked;   
       this.setState({
       checkedGender: arr
       })
@@ -59,8 +51,8 @@ class ShowFilter extends React.Component {
           genderList.push(i+1);
         }}
         
-  console.log (`/${idList}/${genderList}`);  //shows that without filter/ it didnt take the right data (see users.js)
-  
+  console.log (`/${idList}/${genderList}`);  
+
   fetch(`/users/filter/${idList}/${genderList}/`)
       .then(res => res.json())
       .then(jsonData => {   
@@ -69,7 +61,7 @@ class ShowFilter extends React.Component {
         this.setState({
         userList: jsonData
         });    
-        this.props.selectedUsers(this.state.userList);        // selectedUsers - a callback in App.js                                                                                                                                      
+        this.props.selectedUsers(this.state.userList);                                                                                                                                           
       }) 
       .catch(e => {
         console.log('There has been a problem with your fetch operation: ' + e.message);
@@ -98,7 +90,6 @@ class ShowFilter extends React.Component {
                 return(
                       <div key={id}>
                       <input type="checkbox" onClick={(e) => this.handleClick(e)} id={gender.id} name={gender.id}/>
-                      {/* <img className="genderImage" src={gender.image} alt={gender.id} /> */}
                       <p>{gender.name}</p> 
                     </div>
                     ) 
@@ -116,7 +107,6 @@ class ShowFilter extends React.Component {
           </div>
       );
     }
-    
   }
   
   export default ShowFilter;
